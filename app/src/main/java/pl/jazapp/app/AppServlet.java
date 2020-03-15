@@ -26,19 +26,16 @@ public class AppServlet extends HttpServlet {
 
         String[] requestNumbers = req.getParameterValues("numbers");
 
-        if (!(requestNumbers.length < 1) && requestNumbers[0].length() > 0) {
+        if (requestNumbers.length > 0 && requestNumbers[0].length() > 0) {
             String numbers = requestNumbers[0];
             List<Integer> numbersList = Arrays.stream(numbers.split(","))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
 
             Float averageNumber = calculateAverage(numbersList);
-
-            DecimalFormat df = new DecimalFormat("0.##");
-            df.setRoundingMode(RoundingMode.HALF_UP);
             resp.setStatus(200);
             resp.setContentType("text/plain");
-            writer.println(df.format(averageNumber));
+            writer.println(formatNumber(averageNumber));
 
             return;
         }
@@ -56,5 +53,12 @@ public class AppServlet extends HttpServlet {
         average /= numbers.size();
 
         return average;
+    }
+
+    private String formatNumber(Float number) {
+        DecimalFormat df = new DecimalFormat("0.##");
+        df.setRoundingMode(RoundingMode.HALF_UP);
+
+        return df.format(number);
     }
 }
