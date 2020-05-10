@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+>
+<h:head>
+    <h:outputStylesheet name="main.css" library="css"/>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+</h:head>
+    <h:body>
+        <div class="jumbotron text-center">
+            <h1 class="display-4">ALLEZON</h1>
+            <h3>Welcome John Doe!</h3>
+        </div>
+        <!--- <h4>My text from properties <h:outputText value="#{ms['aaa']}"></h:outputText></h4> -->
+        <p class="text-center">Hello from John Doe!</p>
+        <h:form styleClass="text-center">
+            <h:commandButton styleClass="btn btn-primary text-center" action="#{logoutController.logout()}" value="Logout"/>
+        </h:form>
+    </h:body>
+</html>
