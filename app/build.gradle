@@ -18,6 +18,8 @@ repositories {
 
 dependencies {
     implementation 'javax:javaee-api:8.0'
-
-    testImplementation 'junit:junit:4.12'
+    implementation 'org.hibernate:hibernate-core:5.4.16.Final'
+    testImplementation 'junit:junit:4.+'
 }
+
+
