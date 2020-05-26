@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: database_init
+      author: Krzysztof Windorpski
+      sqlFile:
+        splitStatements: false
+        path: db_init.sql
+        relativeToChangelogFile: true
+  - changeSet:
+      id: 20200526_users
+      author: Krzysztof Windorpski
+      sqlFile:
+        splitStatements: false
+        path: 20200526_users.sql
+        relativeToChangelogFile: true
