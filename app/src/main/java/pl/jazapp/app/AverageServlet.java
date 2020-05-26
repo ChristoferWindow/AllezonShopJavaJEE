@@ -47,7 +47,7 @@ public class AverageServlet extends HttpServlet {
         writer.println(String.format("My userId is: %d", userContext.getUserId()));
 
         if(userContext.getUserId() == null){
-            userContext.logIn(new Random().nextLong());
+            userContext.setUserId(new Random().nextLong());
         }
 
     }

@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: database_init
+      id: 20200512_users_init
       author: Krzysztof Windorpski
       sqlFile:
         splitStatements: false
-        path: db_init.sql
+        path: 20200512_users_init.sql
         relativeToChangelogFile: true
   - changeSet:
       id: 20200526_users
@@ -13,3 +13,26 @@ databaseChangeLog:
         splitStatements: false
         path: 20200526_users.sql
         relativeToChangelogFile: true
+  - changeSet:
+      id: 20200526_db_init
+      author: Krzysztof Windorpski
+      sqlFile:
+        splitStatements: false
+        path: 20200526_db_init.sql
+        relativeToChangelogFile: true
+  - changeSet:
+      id: 20200526_1_users
+      author: Krzysztof Windorpski
+      sqlFile:
+        splitStatements: false
+        path: 20200526_1_users.sql
+        relativeToChangelogFile: true
+  - changeSet:
+      id: 20200512_hibernate_config
+      author: Krzysztof Windorpski
+      sqlFile:
+        splitStatements: false
+        path: 20200512_hibernate_config.sql
+        relativeToChangelogFile: true
+
+

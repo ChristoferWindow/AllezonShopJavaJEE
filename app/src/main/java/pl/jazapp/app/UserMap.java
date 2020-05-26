@@ -1,6 +1,6 @@
 package pl.jazapp.app;
 
-import pl.jazapp.app.webapp.classes.User;
+import pl.jazapp.app.user.User;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.io.Serializable;

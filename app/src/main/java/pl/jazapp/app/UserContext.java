@@ -1,6 +1,6 @@
 package pl.jazapp.app;
 
-import pl.jazapp.app.webapp.classes.User;
+import pl.jazapp.app.user.User;
 
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -14,14 +14,7 @@ public class UserContext implements Serializable {
 
     private Long userId;
     private String username;
-    private String password;
-    private String firstname;
-    private String lastname;
-    private Date birthdate;
-    private String email;
     private boolean loggedIn;
-
-    protected Set<User> accounts = new HashSet<User>();
 
     public UserContext(){
 
@@ -36,57 +29,7 @@ public class UserContext implements Serializable {
         return userId;
     }
 
-    public void logIn(Long userId){
-        this.userId = userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setUserId(Long userId) { this.userId = userId; }
 
     public boolean isLoggedIn() {
         return loggedIn;
@@ -95,4 +38,8 @@ public class UserContext implements Serializable {
     public void setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
     }
+
+    public String getUsername() { return username; }
+
+    public void setUsername(String username) { this.username = username; }
 }

@@ -15,12 +15,8 @@ public class LogoutController {
 
     public String logout(){
 
+        userContext.setUserId(null);
         userContext.setUsername(null);
-        userContext.setPassword(null);
-        userContext.setFirstname(null);
-        userContext.setLastname(null);
-        userContext.setBirthdate(null);
-        userContext.setEmail(null);
         userContext.setLoggedIn(false);
 
         return "login.xhtml?faces-redirect=true";

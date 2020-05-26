@@ -1,23 +1,23 @@
 package pl.jazapp.app.webapp.register;
 
 import pl.jazapp.app.UserMap;
-import pl.jazapp.app.webapp.classes.User;
+import pl.jazapp.app.user.User;
+import pl.jazapp.app.user.UserService;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Named
 @RequestScoped
 public class RegisterController {
 
+//    @Inject
+//    UserMap userMap;
     @Inject
-    UserMap userMap;
+    UserService userService;
 
     public String register(RegisterRequest registerRequest) throws ParseException {
 
@@ -34,7 +34,7 @@ public class RegisterController {
                 registerRequest.getEmail()
         );
 
-        if (userMap.registerUser(user)) {
+        if (userService.create(user)) {
             return "/login.xhtml?faces-redirect=true";
         }
         var flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();

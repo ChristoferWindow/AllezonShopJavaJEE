@@ -1,4 +1,4 @@
-package pl.jazapp.app.webapp.classes;
+package pl.jazapp.app.user;
 
 import java.util.Date;
 
