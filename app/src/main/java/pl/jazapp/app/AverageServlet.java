@@ -39,12 +39,10 @@ public class AverageServlet extends HttpServlet {
 
             wynik = wynik/i;
 
-            writer.println("Average: " + wynik );
+            writer.println("Average equals: " + wynik );
         } else {
-            writer.println("You haven't sent any numbers");
+            writer.println("Please put parameters.");
         }
-
-        writer.println(String.format("My userId is: %d", userContext.getUserId()));
 
         if(userContext.getUserId() == null){
             userContext.logIn(new Random().nextLong());
