@@ -1,0 +1,3 @@
+rootProject.name = 'JAZ-phase2-s18562'
+
+include ':app'

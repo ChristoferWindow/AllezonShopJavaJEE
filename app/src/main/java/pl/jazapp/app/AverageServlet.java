@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Arrays;
+import java.util.Formatter;
 import java.util.Random;
 import java.util.UUID;
 
@@ -39,7 +43,14 @@ public class AverageServlet extends HttpServlet {
 
             wynik = wynik/i;
 
-            writer.println("Average equals: " + wynik );
+            DecimalFormat df = new DecimalFormat("#.##");
+            df.setRoundingMode(RoundingMode.HALF_UP);
+            var halfUp = df.format(wynik);
+            BigDecimal result = new BigDecimal(halfUp).stripTrailingZeros();
+
+
+
+            writer.println("Average equals: " + result );
         } else {
             writer.println("Please put parameters.");
         }
