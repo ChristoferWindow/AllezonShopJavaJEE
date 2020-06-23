@@ -30,7 +30,7 @@
                         <f:validateLength minimum="7" maximum="25"/>
                         <f:validator validatorId="usernameValidator" />
                     </h:inputText>
-                    <h:messages for="username" styleClass="error-message" rendered="#{flash.containsKey('error-message')}" value="#{flash['error-message']}"/>
+                    <h:messages for="username" styleClass="error-message" />
                     <h:outputText styleClass="error-message" rendered="#{flash.containsKey('error-message')}" value="#{flash['error-message']}"/>
                 </div>
                 <div class="form-group input-group">
