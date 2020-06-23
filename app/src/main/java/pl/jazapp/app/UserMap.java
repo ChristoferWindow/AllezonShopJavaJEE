@@ -63,7 +63,7 @@ public class UserMap implements Serializable {
 
     public boolean registerUser(User user) {
         for (Map.Entry<String, User> entry : usersList.entrySet()) {
-            if (user.getUsername().equals(entry.getKey())) {
+            if (user.getUsername().equals(entry.getValue().getUsername())) {
                 return false;
             }
         }
