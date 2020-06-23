@@ -34,7 +34,7 @@ public class RegisterController {
                 registerRequest.getEmail()
         );
 
-        if (userService.create(user)) {
+        if (userService.getUserByUsername(registerRequest.getUsername()).isEmpty() && userService.create(user)) {
             return "/login.xhtml?faces-redirect=true";
         }
         var flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();

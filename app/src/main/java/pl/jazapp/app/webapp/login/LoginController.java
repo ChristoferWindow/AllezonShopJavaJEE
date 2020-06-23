@@ -37,7 +37,6 @@ public class LoginController {
         Optional<UserEntity> user = userService.getUserByUsername(loginRequest.getUsername());
 
         if(user.isPresent() && passwordEncoder.matches(loginRequest.getPassword(), user.get().getPassword())) {
-
             setUserSession(userContext, user.get().getId() ,user.get().getUsername());
             return "/index.xhtml";
         }
