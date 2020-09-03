@@ -1,12 +1,7 @@
 package pl.jazapp.app;
 
-import pl.jazapp.app.user.User;
-
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @SessionScoped
 public class UserContext implements Serializable {
