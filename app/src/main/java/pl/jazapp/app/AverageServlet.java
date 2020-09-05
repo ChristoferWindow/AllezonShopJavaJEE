@@ -25,7 +25,7 @@ public class AverageServlet extends HttpServlet {
 
         var writer = resp.getWriter();
 
-        if(req.getParameterMap().size() != 0){
+        if(req.getParameterMap().size() != 0 ){
             var numbers = req.getParameter("numbers");
 
             double wynik = 0;

@@ -1,4 +1,4 @@
-package pl.jazapp.app.departments;
+package pl.jazapp.app.department;
 
 import javax.persistence.*;
 
@@ -14,7 +14,6 @@ public class Department {
     private String name;
 
     public Department() {
-
     }
 
     public Department(String name){

@@ -25,6 +25,8 @@ public class UserEntity {
     private Date birthdate;
     @Column(name = "email")
     private String email;
+    @Column(name = "role")
+    private String role;
 
     public Long getId() {
         return id;
@@ -80,5 +82,13 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

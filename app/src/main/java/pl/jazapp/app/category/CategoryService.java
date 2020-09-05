@@ -1,13 +1,15 @@
-package pl.jazapp.app.categories;
+package pl.jazapp.app.category;
 
-import pl.jazapp.app.categories.persistence.Category;
-import pl.jazapp.app.categories.persistence.CategoryCommandRepository;
-import pl.jazapp.app.categories.persistence.CategoryQueryRepository;
+import pl.jazapp.app.category.persistence.Category;
+import pl.jazapp.app.category.persistence.CategoryCommandRepository;
+import pl.jazapp.app.category.persistence.CategoryQueryRepository;
+import pl.jazapp.app.department.Department;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @ApplicationScoped
 public class CategoryService {
@@ -25,7 +27,6 @@ public class CategoryService {
     public Optional<Category> getByName(String name) {
         return queryRepository.getByName(name);
     }
-    public void delete(Long id) { commandRepository.delete(id);}
-    public void update(Long id, String name, Long departmentId) { commandRepository.update(id, name, departmentId); }
-    public void create(String name, Long departmentId) { commandRepository.create(name, departmentId); }
+    public void update(Long id, String name, Department department) { commandRepository.update(id, name, department); }
+    public void create(String name, Department department) { commandRepository.create(name, department); }
 }

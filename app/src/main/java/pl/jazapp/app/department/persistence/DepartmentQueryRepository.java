@@ -1,6 +1,6 @@
-package pl.jazapp.app.departments.persistence;
+package pl.jazapp.app.department.persistence;
 
-import pl.jazapp.app.departments.Department;
+import pl.jazapp.app.department.Department;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

@@ -1,4 +1,4 @@
-package pl.jazapp.app.categories;
+package pl.jazapp.app.category;
 
 import pl.jazapp.app.webapp.categories.CategoryController;
 
@@ -20,7 +20,7 @@ public class CategoriesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/xml");
-        RequestDispatcher rd = req.getRequestDispatcher("categories/edit.xhtml");
+        RequestDispatcher rd = req.getRequestDispatcher("category/edit.xhtml");
         rd.include(req, resp);
     }
 }

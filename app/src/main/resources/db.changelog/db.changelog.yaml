@@ -35,4 +35,3 @@ databaseChangeLog:
         path: 20200512_hibernate_config.sql
         relativeToChangelogFile: true
 
-

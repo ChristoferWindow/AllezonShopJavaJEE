@@ -28,6 +28,7 @@ public class UserService {
         entity.setBirthdate(user.getBirthdate());
         entity.setEmail(user.getEmail());
         entity.setPassword(passwordEncoder.encode(user.getPassword()));
+        entity.setRole("DEFAULT");
 
         em.persist(entity);
 
@@ -38,6 +39,14 @@ public class UserService {
     {
         return em.createQuery("from UserEntity where username = :username", UserEntity.class)
                 .setParameter("username", username)
+                .getResultList().stream()
+                .findFirst();
+    }
+
+    public Optional<UserEntity> getById(Long id)
+    {
+        return em.createQuery("from UserEntity where id = :id", UserEntity.class)
+                .setParameter("id", id)
                 .getResultList().stream()
                 .findFirst();
     }

@@ -1,21 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
 >
+
 <h:head>
-    <h:outputStylesheet name="main.css" library="css"/>
     <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+    <h:outputStylesheet name="main.css" library="css"/>
 </h:head>
-    <h:body>
-        <div class="jumbotron text-center">
-            <h1 class="display-4">ALLEZON</h1>
-            <h3>Welcome John Doe!</h3>
-        </div>
-        <!--- <h4>My text from properties <h:outputText value="#{ms['aaa']}"></h:outputText></h4> -->
-        <p class="text-center">Hello from John Doe!</p>
-        <h:form styleClass="text-center">
-            <h:commandButton styleClass="btn btn-primary text-center" action="#{logoutController.logout()}" value="Logout"/>
-        </h:form>
-    </h:body>
+
+<h:body>
+    <div class="jumbotron text-center">
+        <p>Welcome to</p>
+        <h1 class="display-4">ALLEZON</h1>
+        <p>Departments</p>
+    </div>
+    <div class="container">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+            <h1> List of all auctions </h1>
+            <ui:repeat value="#{auctionController.getAll()}" var="auction">
+                <div class="row" id="auction-#{auction.id}">
+                    <h:outputText style="font-size:1em;font-family: serif; color:black;" styleClass="col-md" value="##{auction.title}"/>
+                    <div class="col-sm">
+                        <h:form>
+                            <h:inputHidden value="#{categoryRequest.id}"/>
+                            <h:inputHidden value="#{categoryRequest.name}"/>
+                            <h:inputHidden value="#{categoryRequest.departmentId}"/>
+
+                            <h:commandButton styleClass="btn btn-info" value="Edytuj dzial" action="#{categoryController.OpenEditingSite(categoryRequest)}" style="display: block">
+                                <f:actionListener binding="#{categoryRequest.setId(categoryRequest.id)}"/>
+                                <f:actionListener binding="#{categoryRequest.setName(categoryRequest.name)}"/>
+                                <f:actionListener binding="#{categoryRequest.setDepartmentId(categoryRequest.departmentId)}"/>
+                            </h:commandButton>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:repeat>
+        </article>
+    </div>
+</h:body>
 </html>

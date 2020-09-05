@@ -1,11 +1,131 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+<h:head>
+    <h:outputStylesheet name="main.css" library="css"/>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+</h:head>
+<h:body>
+    <div class="jumbotron text-center">
+        <p>Welcome to</p>
+        <h1 class="display-4">ALLEZON</h1>
+        <p>Edit deparment</p>
+    </div>
+    <article class="card-body mx-auto text-center" style="max-width: 1200px;">
+    <h:form style="width: 50%; margin: auto;" class="greeny" rendered="#{ not empty auctionRequest.id}">
+        <h:inputText id="title" styleClass="form-control d-block my-2" a:placeholder="Title"
+                     value="#{auctionRequest.title}" required="true"/>
+        <h:inputTextarea id="description" row="3" styleClass="form-control d-block py-2" a:placeholder="Description"
+                         value="#{auctionRequest.description}" required="true"/>
+
+        <h:inputText id="price" styleClass="form-control d-block my-2" a:placeholder="Price"
+                     value="#{auctionRequest.price}" required="true" requiredMessage="Price is required"/>
+        <h:inputText id="photo-link-1" styleClass="form-control d-block my-2" a:placeholder="Url of image"
+                     value="#{auctionRequest.photo1.url}" required="true" requiredMessage="Photo link is required"/>
+        <h:inputText id="photo-link-2" styleClass="form-control d-block my-2" a:placeholder="Url of image"
+                     value="#{auctionRequest.photo2.url}" required="true" requiredMessage="Photo link is required"/>
+        <h:inputText id="photo-link-3" styleClass="form-control d-block my-2" a:placeholder="Url of image"
+                     value="#{auctionRequest.photo3.url}" required="true" requiredMessage="Photo link is required"/>
+        <div class="row">
+            <div class="col">
+                <h:inputText id="param1-name" styleClass="form-control d-block my-2" a:placeholder="eg. Is new ?"
+                             value="#{auctionRequest.param1Name}" required="true" requiredMessage="Parameter is required"/>
+            </div>
+            <div class="col">
+                <h:inputText id="param1-value" styleClass="form-control d-block my-2" a:placeholder="eg. YES/NO"
+                             value="#{auctionRequest.param1Value}" required="true" requiredMessage="Parameter value is required"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h:inputText id="param2-name" styleClass="form-control d-block my-2" a:placeholder="Condition of item?"
+                             value="#{auctionRequest.param2Name}" required="true"/>
+            </div>
+            <div class="col">
+                <h:inputText id="param2-value" styleClass="form-control d-block my-2" a:placeholder="eg. YES/NO"
+                             value="#{auctionRequest.param2Value}" required="true" requiredMessage="Parameter value is required"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h:inputText id="param3-name" styleClass="form-control d-block my-2" a:placeholder="When purchased?"
+                             value="#{auctionRequest.param3Name}" required="true"/>
+            </div>
+            <div class="col">
+                <h:inputText id="param3-value" styleClass="form-control d-block my-2" a:placeholder="eg. YES/NO"
+                             value="#{auctionRequest.param3Value}" required="true" requiredMessage="Parameter value is required"/>
+            </div>
+        </div>
+
+        <h:selectOneMenu id="category" styleClass="form-control d-block my-2" value="#{auctionRequest.categoryId}">
+            <f:selectItems value="#{categoryController.getAll()}" var="category"
+                           itemValue="#{category.id}"
+                           itemLabel="#{category.name}"/>
+        </h:selectOneMenu>
+
+        <h:commandButton styleClass="btn d-block btn-sm btn-warning font-weight-bold shadow-lg py-2" value="Add Listing"
+                         action="#{auctionController.update(auctionRequest)}"/>
+    </h:form>
+
+    <h:form style="width: 50%; margin: auto;" class="greeny" rendered="#{empty auctionRequest.id}">
+        <h:inputText id="title" styleClass="form-control d-block my-2" a:placeholder="Title"
+                     value="#{auctionRequest.title}" required="true"/>
+        <h:inputTextarea id="description" row="3" styleClass="form-control d-block py-2" a:placeholder="Description"
+                         value="#{auctionRequest.description}" required="true"/>
+
+        <h:inputText id="price" styleClass="form-control d-block my-2" a:placeholder="Price"
+                     value="#{auctionRequest.price}" required="true" requiredMessage="Price is required"/>
+        <h:inputText id="photo-link-1" styleClass="form-control d-block my-2" a:placeholder="Url of image"
+                     value="#{auctionRequest.photo1}" required="true" requiredMessage="Photo link is required"/>
+        <h:inputText id="photo-link-2" styleClass="form-control d-block my-2" a:placeholder="Url of image"
+                     value="#{auctionRequest.photo2}" required="true" requiredMessage="Photo link is required"/>
+        <h:inputText id="photo-link-3" styleClass="form-control d-block my-2" a:placeholder="Url of image"
+                     value="#{auctionRequest.photo3}" required="true" requiredMessage="Photo link is required"/>
+        <div class="row">
+            <div class="col">
+                <h:inputText id="param1-name" styleClass="form-control d-block my-2" a:placeholder="eg. Is new ?"
+                             value="#{auctionRequest.param1Name}" required="true" requiredMessage="Parameter is required"/>
+            </div>
+            <div class="col">
+                <h:inputText id="param1-value" styleClass="form-control d-block my-2" a:placeholder="eg. YES/NO"
+                             value="#{auctionRequest.param1Value}" required="true" requiredMessage="Parameter value is required"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h:inputText id="param2-name" styleClass="form-control d-block my-2" a:placeholder="Condition of item?"
+                             value="#{auctionRequest.param2Name}" required="true"/>
+            </div>
+            <div class="col">
+                <h:inputText id="param2-value" styleClass="form-control d-block my-2" a:placeholder="eg. YES/NO"
+                             value="#{auctionRequest.param2Value}" required="true" requiredMessage="Parameter value is required"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h:inputText id="param3-name" styleClass="form-control d-block my-2" a:placeholder="When purchased?"
+                             value="#{auctionRequest.param3Name}" required="true"/>
+            </div>
+            <div class="col">
+                <h:inputText id="param3-value" styleClass="form-control d-block my-2" a:placeholder="eg. YES/NO"
+                             value="#{auctionRequest.param3Value}" required="true" requiredMessage="Parameter value is required"/>
+            </div>
+        </div>
+
+        <h:selectOneMenu id="category" styleClass="form-control d-block my-2" value="#{auctionRequest.categoryId}">
+            <f:selectItems value="#{categoryController.getAll()}" var="category"
+                           itemValue="#{category.id}"
+                           itemLabel="#{category.name}"/>
+        </h:selectOneMenu>
+
+        <h:commandButton styleClass="btn d-block btn-sm btn-primary font-weight-bold shadow-lg py-2" value="Add Listing"
+                         action="#{auctionController.create(auctionRequest)}"/>
+    </h:form>
+    </article>
+</h:body>
 </html>

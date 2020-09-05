@@ -1,4 +1,6 @@
-package pl.jazapp.app.categories.persistence;
+package pl.jazapp.app.category.persistence;
+
+import pl.jazapp.app.department.Department;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -12,17 +14,17 @@ public class CategoryCommandRepository {
     private EntityManager em;
 
     @Transactional
-    public void create(String name, Long departmentId){
-        Category category = new Category(name, departmentId);
+    public void create(String name, Department department){
+        Category category = new Category(name, department);
         em.persist(category);
     }
 
     @Transactional
-    public void update(Long id, String newName, Long departmentId){
+    public void update(Long id, String newName, Department department){
         var category = em.find(Category.class, id);
         var merge = em.merge(category);
         merge.setName(newName);
-        merge.setDepartmentId(departmentId);
+        merge.setDepartment(department);
         em.persist(merge);
     }
 

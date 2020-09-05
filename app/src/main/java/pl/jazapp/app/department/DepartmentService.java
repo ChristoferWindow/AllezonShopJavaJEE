@@ -1,8 +1,7 @@
-package pl.jazapp.app.departments;
+package pl.jazapp.app.department;
 
-import pl.jazapp.app.categories.persistence.Category;
-import pl.jazapp.app.departments.persistence.DepartmentCommandRepository;
-import pl.jazapp.app.departments.persistence.DepartmentQueryRepository;
+import pl.jazapp.app.department.persistence.DepartmentCommandRepository;
+import pl.jazapp.app.department.persistence.DepartmentQueryRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

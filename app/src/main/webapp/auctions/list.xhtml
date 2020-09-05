@@ -20,18 +20,18 @@
     <div class="container">
         <article class="card-body mx-auto" style="max-width: 400px;">
             <ui:repeat value="#{auctionController.getAll()}" var="auction">
-                <div class="row" id="category-#{category.departmentId}">
-                    <h:outputText style="font-size:1em;font-family: serif; color:black;" styleClass="col-md" value="##{category.id} #{category.name}"/>
+                <div class="row" id="auction-#{auction.id}">
+                    <h:outputText style="font-size:1em;font-family: serif; color:black;" styleClass="col-md" value="##{auction.title}"/>
                     <div class="col-sm">
                         <h:form>
-                            <h:inputHidden value="#{category.id}"/>
-                            <h:inputHidden value="#{category.name}"/>
-                            <h:inputHidden value="#{category.departmentId}"/>
+                            <h:inputHidden value="#{categoryRequest.id}"/>
+                            <h:inputHidden value="#{categoryRequest.name}"/>
+                            <h:inputHidden value="#{categoryRequest.departmentId}"/>
 
                             <h:commandButton styleClass="btn btn-info" value="Edytuj dzial" action="#{categoryController.OpenEditingSite(categoryRequest)}" style="display: block">
-                                <f:actionListener binding="#{categoryRequest.setId(category.id)}"/>
-                                <f:actionListener binding="#{categoryRequest.setName(category.name)}"/>
-                                <f:actionListener binding="#{categoryRequest.setDepartmentId(category.departmentId)}"/>
+                                <f:actionListener binding="#{categoryRequest.setId(categoryRequest.id)}"/>
+                                <f:actionListener binding="#{categoryRequest.setName(categoryRequest.name)}"/>
+                                <f:actionListener binding="#{categoryRequest.setDepartmentId(categoryRequest.departmentId)}"/>
                             </h:commandButton>
                         </h:form>
                     </div>

@@ -1,7 +1,6 @@
-package pl.jazapp.app.categories.persistence;
+package pl.jazapp.app.category.persistence;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
