@@ -3,7 +3,6 @@ package pl.jazapp.app.auction.persistence;
 import org.hibernate.annotations.Cascade;
 import pl.jazapp.app.auctionParameter.AuctionParameter;
 import pl.jazapp.app.category.persistence.Category;
-import pl.jazapp.app.parameter.persistence.Parameter;
 import pl.jazapp.app.photo.persistence.Photo;
 import pl.jazapp.app.user.UserEntity;
 
@@ -38,9 +37,8 @@ public class Auction {
     @Column(name = "version")
     private Long version;
 
-    @OneToMany
+    @OneToMany(mappedBy = "auction", fetch = FetchType.EAGER)
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
-    @JoinColumn(name = "auction_id")
     private List<Photo> photo;
 
     @OneToMany(mappedBy = "auction")

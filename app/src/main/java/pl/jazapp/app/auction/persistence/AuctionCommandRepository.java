@@ -34,11 +34,18 @@ public class AuctionCommandRepository {
             List<Photo> photo,
             List<AuctionParameter> auctionParameters
     ){
-        Auction auction = new Auction(title, description, price, category, user, version, photo, auctionParameters);
         try {
-            em.getTransaction().begin();
+            Auction auction = new Auction();
+            auction.setTitle(title);
+            auction.setDescription(description);
+            auction.setPrice(price);
+            auction.setCategory(category);
+            auction.setUser(user);
+            auction.setVersion(version);
+            auction.setPhoto(photo);
+            auction.setAuctionParameters(auctionParameters);
             em.persist(auction);
-            em.getTransaction().commit();
+            em.flush();
         }
         catch (RuntimeException e) {
             throw e; // or display error message

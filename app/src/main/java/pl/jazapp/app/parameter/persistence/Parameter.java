@@ -1,5 +1,6 @@
 package pl.jazapp.app.parameter.persistence;
 
+import org.hibernate.annotations.Cascade;
 import pl.jazapp.app.auction.persistence.Auction;
 import pl.jazapp.app.auctionParameter.AuctionParameter;
 
@@ -17,7 +18,8 @@ public class Parameter {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "parameter")
+    @OneToMany(mappedBy = "parameter", fetch = FetchType.EAGER)
+    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     private List<AuctionParameter> auction;
 
     public Parameter(String name) {

@@ -23,9 +23,9 @@ public class AuctionParameter {
     @MapsId
     private Auction auction;
 
-    @JoinColumn(name = "parameter_id")
     @ManyToOne
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    @JoinColumn(name = "parameter_id")
     @MapsId
     private Parameter parameter;
 
