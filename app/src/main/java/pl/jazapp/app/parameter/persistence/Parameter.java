@@ -22,6 +22,7 @@ public class Parameter {
     @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     private List<AuctionParameter> auction;
 
+    public Parameter(){}
     public Parameter(String name) {
         this.name = name;
     }

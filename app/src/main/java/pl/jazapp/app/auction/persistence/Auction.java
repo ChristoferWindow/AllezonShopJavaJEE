@@ -8,6 +8,7 @@ import pl.jazapp.app.user.UserEntity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "auction")
@@ -26,24 +27,22 @@ public class Auction {
     @Column(name = "price")
     private Float price;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "owner_id")
     private UserEntity user;
 
     @Column(name = "version")
     private Long version;
 
-    @OneToMany(mappedBy = "auction", fetch = FetchType.EAGER)
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    @OneToMany(mappedBy = "auction", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Photo> photo;
 
-    @OneToMany(mappedBy = "auction")
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
-    public List<AuctionParameter> auctionParameters;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "auction", cascade = CascadeType.ALL)
+    public Set<AuctionParameter> auctionParameters;
 
 
     public Auction(){}
@@ -56,7 +55,7 @@ public class Auction {
             UserEntity user,
             Long version,
             List<Photo> photo,
-            List<AuctionParameter> auctionParameters
+            Set<AuctionParameter> auctionParameters
     ) {
         this.title = title;
         this.description = description;
@@ -132,11 +131,11 @@ public class Auction {
         this.photo = photo;
     }
 
-    public List<AuctionParameter> getAuctionParameters() {
+    public Set<AuctionParameter> getAuctionParameters() {
         return auctionParameters;
     }
 
-    public void setAuctionParameters(List<AuctionParameter> auctionParameters) {
+    public void setAuctionParameters(Set<AuctionParameter> auctionParameters) {
         this.auctionParameters = auctionParameters;
     }
 }

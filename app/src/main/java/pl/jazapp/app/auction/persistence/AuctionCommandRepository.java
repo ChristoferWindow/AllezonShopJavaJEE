@@ -32,10 +32,16 @@ public class AuctionCommandRepository {
             UserEntity user,
             Long version,
             List<Photo> photo,
-            List<AuctionParameter> auctionParameters
+            Set<AuctionParameter> auctionParameters
     ){
         try {
             Auction auction = new Auction();
+            for (Photo photoItem : photo) {
+                photoItem.setAuction(auction);
+            }
+            for (AuctionParameter auctionParameter: auctionParameters) {
+                auctionParameter.setAuction(auction);
+            }
             auction.setTitle(title);
             auction.setDescription(description);
             auction.setPrice(price);

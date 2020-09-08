@@ -9,25 +9,22 @@ import javax.persistence.*;
 @Entity
 @Table(name = "auction_parameter")
 public class AuctionParameter {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+
+    @EmbeddedId
+    private AuctionParameterId auctionParameterId = new AuctionParameterId();
 
     @Column(name = "value")
     private String value;
 
     @ManyToOne
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     @JoinColumn(name = "auction_id")
-    @MapsId
+    @MapsId("auctionId")
     private Auction auction;
 
-    @ManyToOne
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    @ManyToOne(cascade = CascadeType.ALL)
+    @MapsId("parameterId")
     @JoinColumn(name = "parameter_id")
-    @MapsId
-    private Parameter parameter;
+    private Parameter parameter = new Parameter();
 
     public AuctionParameter() {
     }
@@ -35,14 +32,6 @@ public class AuctionParameter {
     public AuctionParameter(String value, Parameter parameter) {
         this.value = value;
         this.parameter = parameter;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getValue() {

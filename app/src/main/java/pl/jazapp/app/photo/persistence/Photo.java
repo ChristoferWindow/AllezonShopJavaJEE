@@ -15,10 +15,8 @@ public class Photo {
     @Column(name = "url")
     private String url;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    @ManyToOne
     @JoinColumn(name = "auction_id")
-    @MapsId
     private Auction auction;
 
     public Photo(){}

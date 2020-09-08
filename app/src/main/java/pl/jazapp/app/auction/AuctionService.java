@@ -52,7 +52,7 @@ public class AuctionService {
             Category category,
             UserEntity user,
             List<Photo> photo,
-            List<AuctionParameter> auctionParameters
+            Set<AuctionParameter> auctionParameters
     ) {
         commandRepository.create(title,description,price,category,user,1L,photo, auctionParameters);
     }
