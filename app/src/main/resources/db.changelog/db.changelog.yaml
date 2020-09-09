@@ -34,4 +34,11 @@ databaseChangeLog:
         splitStatements: false
         path: 20200512_hibernate_config.sql
         relativeToChangelogFile: true
+  - changeSet:
+      id: 20200908_photo_url
+      author: Krzysztof Windorpski
+      sqlFile:
+        splitStatements: false
+        path: 20200908_photo_url.sql
+        relativeToChangelogFile: true
 

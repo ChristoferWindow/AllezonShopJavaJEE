@@ -19,10 +19,18 @@
     </div>
     <div class="container">
         <article class="card-body mx-auto" style="max-width: 400px;">
-            <ui:repeat value="#{auctionController.getAll()}" var="auction">
+            <ui:repeat value="#{auctionController.getUserAuctions()}" var="auction">
                 <div class="row shadow-lg p-3 mb-5 bg-white rounded" id="auction-#{auction.id}">
                     <h:outputText id="title-#{auction.id}" style="font-size:1em;font-family: serif; color:black;" styleClass="col-md" value="##{auction.title}"/>
                     <h:graphicImage id="phot-#{auction.id}" url="#{auction.photo[0].url}" width="200" height="171" alt="#{auction.photo[0].url}"/>
+                    <div class="col-sm">
+                        <h:form>
+                            <h:inputHidden value="#{auction.id}"/>
+                            <h:commandButton styleClass="btn btn-info" value="Edytuj dzial" action="#{auctionController.OpenEditingSite(auctionRequest)}" style="display: block">
+                                <f:actionListener binding="#{auctionRequest.setId(auction.id)}"/>
+                            </h:commandButton>
+                        </h:form>
+                    </div>
                 </div>
             </ui:repeat>
         </article>

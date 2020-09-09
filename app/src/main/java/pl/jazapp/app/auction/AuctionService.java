@@ -56,4 +56,8 @@ public class AuctionService {
     ) {
         commandRepository.create(title,description,price,category,user,1L,photo, auctionParameters);
     }
+
+    public List<Auction> getUserAuctions(UserEntity user) {
+        return queryRepository.getByOwnerId(user.getId());
+    }
 }

@@ -18,6 +18,7 @@
     </div>
     <article class="card-body mx-auto text-center" style="max-width: 1200px;">
     <h:form style="width: 50%; margin: auto;" class="greeny" rendered="#{ not empty auctionRequest.id}">
+        <h2>Edit Auction {auctionRequest.id}</h2>
         <h:inputText id="title" styleClass="form-control d-block my-2" a:placeholder="Title"
                      value="#{auctionRequest.title}" required="true"/>
         <h:inputTextarea id="description" row="3" styleClass="form-control d-block py-2" a:placeholder="Description"
@@ -73,6 +74,7 @@
     </h:form>
 
     <h:form style="width: 50%; margin: auto;" class="greeny" rendered="#{empty auctionRequest.id}">
+        <h2>New Auction</h2>
         <h:inputText id="title" styleClass="form-control d-block my-2" a:placeholder="Title"
                      value="#{auctionRequest.title}" required="true"/>
         <h:inputTextarea id="description" row="3" styleClass="form-control d-block py-2" a:placeholder="Description"

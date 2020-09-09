@@ -26,4 +26,8 @@ public class AuctionQueryRepository {
     public Optional<Auction> getByTitle(String title){
         return em.createQuery("from Auction WHERE title =:title", Auction.class).setParameter("title", title).getResultList().stream().findFirst();
     }
+
+    public List<Auction> getByOwnerId(Long id) {
+        return em.createQuery("from Auction WHERE owner_id = :id", Auction.class).setParameter("id", id).getResultList();
+    }
 }
