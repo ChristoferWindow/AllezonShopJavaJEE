@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:head>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
+<h:body>
+    <div class="jumbotron text-center">
+        <p>Welcome to</p>
+        <h1 class="display-4">ALLEZON</h1>
+        <p>Edit deparment</p>
+    </div>
+    <article class="card-body mx-auto" style="max-width: 400px;">
+        <h:form class="form-base" rendered="#{not empty categoryRequest.id}">
+            Edit category: ${categoryRequest.id} ${categoryRequest.name}<br /><br />
+            Name: <h:inputText id="name" styleClass="form-control" a:placeholder="#{categoryRequest.name}" value="#{categoryRequest.name}" />
+            <div class="form-group text-center">
+                Department:
+                <h:selectOneMenu id="department" value="#{categoryRequest.departmentId}" styleClass="browser-default custom-select">
+                    <f:selectItems
+                            value="#{departmentController.getAll()}"
+                            var="department"
+                            itemValue="#{department.id}"
+                            itemLabel="#{department.name}"
+                    />
+                </h:selectOneMenu>
+            </div>
+            <h:commandButton id="save" styleClass="btn btn-primary" value="Edit category" action="#{categoryController.update(categoryRequest)}">
+                <f:metadata>
+                    <f:viewParam name="categoryId" value="#{categoryRequest.id}" />
+                    <f:viewParam name="departmentId" value="#{categoryRequest.departmentId}" />
+                </f:metadata>
+            </h:commandButton> <br/>
+        </h:form>
+        <h:form class="form-base text-center" rendered="#{empty categoryRequest.id}">
+            Create category <br /><br />
+            Name: <h:inputText id="name" styleClass="form-control text-center" a:placeholder="name" value="#{categoryRequest.name}" />
+            <div class="form-group text-center">
+                Department:
+                <h:selectOneMenu id="department"  value="#{categoryRequest.departmentId}" styleClass="browser-default custom-select">
+                    <f:selectItems
+                            value="#{departmentController.getAll()}"
+                            var="department"
+                            itemValue="#{department.id}"
+                            itemLabel="#{department.name}"
+                    />
+                </h:selectOneMenu>
+            </div>
+            <h:commandButton id="save" styleClass="btn btn-primary" value="Create category" action="#{categoryController.create(categoryRequest)}">
+                <f:metadata>
+                    <f:viewParam name="categoryId" value="#{categoryRequest.id}" />
+<!--                    <f:viewParam name="departmentId" value="#{categoryRequest.departmentId}" />-->
+                </f:metadata>
+            </h:commandButton> <br/>
+        </h:form>
+    </article>
+</h:body>
+</html>

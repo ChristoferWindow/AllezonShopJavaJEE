@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<h:head>
+    <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+    <h:outputStylesheet name="main.css" library="css"/>
+</h:head>
+
+<h:body>
+    <div class="jumbotron text-center">
+        <p>Welcome to</p>
+        <h1 class="display-4">ALLEZON</h1>
+        <p>Departments</p>
+    </div>
+    <div class="container">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+        <ui:repeat value="#{categoryController.getAll()}" var="category">
+            <div class="row" id="category-#{category.departmentId}">
+                <h:outputText style="font-size:1em;font-family: serif; color:black;" styleClass="col-md" value="##{category.id} #{category.name}"/>
+                <div class="col-sm">
+                    <h:form>
+                        <h:inputHidden value="#{category.id}"/>
+                        <h:inputHidden value="#{category.name}"/>
+
+                        <h:commandButton styleClass="btn btn-info" value="Edytuj dzial" action="#{categoryController.OpenEditingSite(categoryRequest)}" style="display: block">
+                            <f:actionListener binding="#{categoryRequest.setId(category.id)}"/>
+                            <f:actionListener binding="#{categoryRequest.setName(category.name)}"/>
+                        </h:commandButton>
+                    </h:form>
+                </div>
+            </div>
+        </ui:repeat>
+        </article>
+    </div>
+</h:body>
+</html>

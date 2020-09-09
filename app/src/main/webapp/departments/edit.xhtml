@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+
+    <h:head>
+        <h:outputStylesheet name="bootstrap.min.css" library="css"/>
+        <h:outputStylesheet name="main.css" library="css"/>
+    </h:head>
+
+    <h:body>
+        <div class="jumbotron text-center">
+            <p>Welcome to</p>
+            <h1 class="display-4">ALLEZON</h1>
+            <p>Edit deparment</p>
+        </div>
+        <article class="card-body mx-auto text-center" style="max-width: 400px;">
+        <h:form class="form-base" rendered="#{not empty departmentRequest.id}">
+            Edit department: ${departmentRequest.id} ${departmentRequest.name}<br /><br />
+            Name: <h:inputText id="name" styleClass="form-control" a:placeholder="name" value="#{departmentRequest.name}" />
+            <h:commandButton styleClass="btn btn-primary" id="save"  value="Edit department" action="#{departmentController.update(departmentRequest)}">
+                <f:metadata>
+                    <f:viewParam name="departmentId" value="#{departmentRequest.id}" />
+                </f:metadata>
+            </h:commandButton> <br/>
+        </h:form>
+        <h:form class="form-base" rendered="#{empty departmentRequest.id}">
+            Create department <br /><br />
+            Name: <h:inputText id="name" styleClass="form-control" a:placeholder="name" value="#{departmentRequest.name}" />
+            <h:commandButton id="save" styleClass="btn btn-primary" value="Create department" action="#{departmentController.create(departmentRequest)}">
+                <f:metadata>
+                    <f:viewParam name="departmentId" value="#{departmentRequest.id}" />
+                </f:metadata>
+            </h:commandButton> <br/>
+        </h:form>
+        </article>
+    </h:body>
+</html>
